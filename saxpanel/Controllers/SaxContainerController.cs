@@ -19,7 +19,7 @@ namespace saxpanel.Controllers
                 new Uri("unix:///var/run/docker.sock"))
                 .CreateClient();
 
-            IList<ContainerListResponse> containers = await client.Containers.ListContainersAsync(new Docker.DotNet.Models.ContainersListParameters() { Limit = 20 });
+            IList<ContainerListResponse> containers = await client.Containers.ListContainersAsync(new Docker.DotNet.Models.ContainersListParameters() { Limit = 50 });
             
             ViewBag.containers = containers;            
 
