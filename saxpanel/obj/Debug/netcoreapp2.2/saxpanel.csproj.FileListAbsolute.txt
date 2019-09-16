@@ -63,3 +63,7 @@ C:/Users/bjoer/source/repos/saxpanel/saxpanel/obj/Debug/netcoreapp2.2/saxpanel.c
 /home/boh/dev/saxpanel/saxpanel/saxpanel/bin/Debug/netcoreapp2.2/saxpanel.Views.pdb
 /home/boh/dev/saxpanel/saxpanel/saxpanel/obj/Debug/netcoreapp2.2/saxpanel.Views.pdb
 /home/boh/dev/saxpanel/saxpanel/saxpanel/obj/Debug/netcoreapp2.2/saxpanel.csproj.CopyComplete
+/home/boh/dev/saxpanel/saxpanel/saxpanel/obj/Debug/netcoreapp2.2/Razor/Views/SaxService/Index.g.cshtml.cs
+/home/boh/dev/saxpanel/saxpanel/saxpanel/obj/Debug/netcoreapp2.2/Razor/Views/SaxCompose/Index.g.cshtml.cs
+/home/boh/dev/saxpanel/saxpanel/saxpanel/obj/Debug/netcoreapp2.2/Razor/Views/SaxCompose/Create.g.cshtml.cs
+/home/boh/dev/saxpanel/saxpanel/saxpanel/obj/Debug/netcoreapp2.2/Razor/Views/SaxService/Create.g.cshtml.cs

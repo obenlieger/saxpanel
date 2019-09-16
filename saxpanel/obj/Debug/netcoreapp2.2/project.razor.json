@@ -2976,8 +2976,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/SaxService/Create.cshtml",
+      "TargetPath": "Views/SaxService/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Home/Privacy.cshtml",
       "TargetPath": "Views/Home/Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/SaxCompose/Create.cshtml",
+      "TargetPath": "Views/SaxCompose/Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2993,6 +3003,11 @@
     {
       "FilePath": "Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/SaxCompose/Index.cshtml",
+      "TargetPath": "Views/SaxCompose/Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3013,6 +3028,11 @@
     {
       "FilePath": "Views/Shared/_Layout.cshtml",
       "TargetPath": "Views/Shared/_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/SaxService/Index.cshtml",
+      "TargetPath": "Views/SaxService/Index.cshtml",
       "FileKind": "mvc"
     }
   ],
