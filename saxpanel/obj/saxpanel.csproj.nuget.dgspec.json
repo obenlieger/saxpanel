@@ -1,30 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bjoer\\source\\repos\\saxpanel\\saxpanel\\saxpanel.csproj": {}
+    "/home/boh/dev/saxpanel/saxpanel/saxpanel/saxpanel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bjoer\\source\\repos\\saxpanel\\saxpanel\\saxpanel.csproj": {
+    "/home/boh/dev/saxpanel/saxpanel/saxpanel/saxpanel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bjoer\\source\\repos\\saxpanel\\saxpanel\\saxpanel.csproj",
+        "projectUniqueName": "/home/boh/dev/saxpanel/saxpanel/saxpanel/saxpanel.csproj",
         "projectName": "saxpanel",
-        "projectPath": "C:\\Users\\bjoer\\source\\repos\\saxpanel\\saxpanel\\saxpanel.csproj",
-        "packagesPath": "C:\\Users\\bjoer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bjoer\\source\\repos\\saxpanel\\saxpanel\\obj\\",
+        "projectPath": "/home/boh/dev/saxpanel/saxpanel/saxpanel/saxpanel.csproj",
+        "packagesPath": "/home/boh/.nuget/packages/",
+        "outputPath": "/home/boh/dev/saxpanel/saxpanel/saxpanel/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\bjoer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/boh/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

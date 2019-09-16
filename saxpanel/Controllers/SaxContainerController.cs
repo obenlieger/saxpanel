@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Docker.DotNet;
 using Docker.DotNet.Models;
+using System.Threading;
+using saxpanel.Helper;
 
 namespace saxpanel.Controllers
 {
@@ -19,8 +21,37 @@ namespace saxpanel.Controllers
                 .CreateClient();
 
             IList<ContainerListResponse> containers = await client.Containers.ListContainersAsync(new Docker.DotNet.Models.ContainersListParameters() { Limit = 20 });
+            
+            ViewBag.containers = containers;            
 
             return View();
+        }
+
+        public async Task<IActionResult> Start(string id)
+        {
+            DockerClient client = new DockerClientConfiguration(
+                new Uri("unix:///var/run/docker.sock"))
+                .CreateClient();
+            
+            await client.Containers.StartContainerAsync(id, null);
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Stop(string id)
+        {
+            DockerClient client = new DockerClientConfiguration(
+                new Uri("unix:///var/run/docker.sock"))
+                .CreateClient();
+
+            var stopped = await client.Containers.StopContainerAsync(id,
+            new ContainerStopParameters
+            {
+                WaitBeforeKillSeconds = 30
+            },
+            CancellationToken.None);
+
+            return RedirectToAction("Index");
         }
 
         // GET: SaxContainer/Details/5

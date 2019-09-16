@@ -1,0 +1,58 @@
+
+@{
+    ViewData["Title"] = "Laufende Container";
+}
+<h2>Dienste</h2>
+<table class="table">
+    <thead>
+        <th>Image</th>
+        <th>Containername</th>
+        <th>State</th>
+        <th>Status</th>
+        <th>Ports</th>
+        <th colspan="2">Action</th>
+    </thead>
+@foreach (var item in ViewBag.containers)
+{
+    <tr>        
+        <td>@item.Image</td>
+        <td>
+        @foreach (var name in @item.Names)
+        {
+            @name<br/>
+        }
+        </td>
+        <td>
+            @if(item.State == "running")
+            {
+                <span class="badge badge-success">@item.State</span>
+            }
+            else if(item.State == "exited")
+            {
+                <span class="badge badge-danger">@item.State</span>
+            }
+            else
+            {
+                @item.State
+            }
+            </td>
+        <td>@item.Status</td>
+        <td>
+        @foreach (var port in @item.Ports)
+        {
+            @:@port.PublicPort:@port.PrivatePort/@port.Type <br/>
+        }
+        </td>
+        <td>
+            @if(item.State == "running")
+            {
+                @:<button type="button" class="btn btn-success disabled">Start</button> </td><td> <a href="SaxContainer/Stop/@item.ID" class="btn btn-danger">Stop</a>
+            }
+            else
+            {
+                @:<a href="/SaxContainer/Start/@item.ID" class="btn btn-success">Start</a> </td><td> <button type="button" class="btn btn-danger disabled">Stop</button>
+            }
+        </td>    
+    </tr>
+}
+</table>
