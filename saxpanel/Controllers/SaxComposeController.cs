@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using saxpanel.Data;
 using saxpanel.Helper;
+using saxpanel.Models;
 
 namespace saxpanel.Controllers
 {
@@ -19,12 +20,31 @@ namespace saxpanel.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            var composes = _context.SaxComposes.ToList();
+
+            return View(composes);
         }
 
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(SaxCompose saxcompose)
+        {
+            try
+            {
+                _context.SaxComposes.Add(saxcompose);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

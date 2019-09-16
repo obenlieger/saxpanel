@@ -1,3 +1,4 @@
+@model IEnumerable<saxpanel.Models.SaxCompose>
 
 @{
     ViewData["Title"] = "Umgebung erstellen";
@@ -5,3 +6,21 @@
 <h2>Umgebungen</h2>
 
 <a href="/SaxCompose/Create" class="btn btn-primary">Neue Umgebung erstellen</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Grundkonfiguration</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.DockerComposeFile</td>
+            </tr>
+        }
+    </tbody>
+</table>

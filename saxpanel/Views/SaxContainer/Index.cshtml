@@ -5,15 +5,18 @@
 <h2>Konfigurierte Dienste</h2>
 <table class="table">
     <thead>
-        <th>Image</th>
-        <th>Containername</th>
-        <th>State</th>
-        <th>Status</th>
-        <th>Ports</th>
-        <th colspan="2">Action</th>
+        <tr>
+            <th>Image</th>
+            <th>Containername</th>
+            <th>State</th>
+            <th>Status</th>
+            <th>Ports</th>
+            <th colspan="2">Action</th>
+        </tr>
     </thead>
+    <tbody>
 @foreach (var item in ViewBag.containers)
-{
+{    
     <tr>        
         <td>@item.Image</td>
         <td>
@@ -55,4 +58,5 @@
         </td>    
     </tr>
 }
+    </tbody>
 </table>
