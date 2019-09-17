@@ -13035,7 +13035,7 @@
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.2.3",
-      "YamlDotNet"
+      "YamlDotNet >= 6.1.2"
     ]
   },
   "packageFolders": {
@@ -13104,7 +13104,7 @@
           },
           "YamlDotNet": {
             "target": "Package",
-            "version": "(, )"
+            "version": "[6.1.2, )"
           }
         },
         "imports": [

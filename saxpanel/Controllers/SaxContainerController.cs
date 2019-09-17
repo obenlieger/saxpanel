@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Docker.DotNet;
 using Docker.DotNet.Models;
 using System.Threading;
+using saxpanel.ViewModels;
 
 namespace saxpanel.Controllers
 {
@@ -15,12 +16,60 @@ namespace saxpanel.Controllers
         // GET: SaxContainer
         public async Task<IActionResult> Index()
         {
+            List<string> nginxnames = new List<string>();
+            nginxnames.Add("mailcowdockerized_nginx-letsencrypt_1");
+            nginxnames.Add("mailcowdockerized_nginx-proxy_1");
+
+            List<string> mailcownames = new List<string>();
+            mailcownames.Add("mailcowdockerized_ipv6nat-mailcow_1");
+            mailcownames.Add("mailcowdockerized_rspamd-mailcow_1");
+            mailcownames.Add("mailcowdockerized_acme-mailcow_1");
+            mailcownames.Add("mailcowdockerized_netfilter-mailcow_1");
+            mailcownames.Add("mailcowdockerized_nginx-mailcow_1");
+            mailcownames.Add("mailcowdockerized_php-fpm-mailcow_1");
+            mailcownames.Add("mailcowdockerized_mysql-mailcow_1");
+            mailcownames.Add("mailcowdockerized_unbound-mailcow_1");
+            mailcownames.Add("mailcowdockerized_dovecot-mailcow_1");
+            mailcownames.Add("mailcowdockerized_clamd-mailcow_1");
+            mailcownames.Add("mailcowdockerized_memcached-mailcow_1");
+            mailcownames.Add("mailcowdockerized_redis-mailcow_1");
+            mailcownames.Add("mailcowdockerized_olefy-mailcow_1");
+            mailcownames.Add("mailcowdockerized_sogo-mailcow_1");
+            mailcownames.Add("mailcowdockerized_solr-mailcow_1");
+            mailcownames.Add("mailcowdockerized_dockerapi-mailcow_1");
+            mailcownames.Add("mailcowdockerized_watchdog-mailcow_1");
+            mailcownames.Add("mailcowdockerized_postfix-mailcow_1");
+
             DockerClient client = new DockerClientConfiguration(
                 new Uri("unix:///var/run/docker.sock"))
                 .CreateClient();
 
             IList<ContainerListResponse> containers = await client.Containers.ListContainersAsync(new Docker.DotNet.Models.ContainersListParameters() { Limit = 50 });
             
+            List<ViewContainer> nginxcontainer = new List<ViewContainer>();
+            List<ViewContainer> mailcowcontainer = new List<ViewContainer>();
+
+            foreach(var con in containers)
+            {
+                foreach(var name in con.Names)
+                {
+                    var cleanname = name.TrimStart('/');
+
+                    if(nginxnames.Contains(cleanname))
+                    {
+                        nginxcontainer.Add(new ViewContainer { Id = con.ID, Name = cleanname, State = con.State, Status = con.Status});
+                    }         
+
+                    if(mailcownames.Contains(cleanname))
+                    {
+                        mailcowcontainer.Add(new ViewContainer { Id = con.ID, Name = cleanname, State = con.State, Status = con.Status});
+                    }           
+                }
+            }
+
+            ViewBag.nginxcontainer = nginxcontainer;
+            ViewBag.mailcowcontainer = mailcowcontainer;
+
             ViewBag.containers = containers;            
 
             return View();
