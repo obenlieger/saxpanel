@@ -40,6 +40,10 @@ namespace saxpanel.Controllers
             mailcownames.Add("mailcowdockerized_watchdog-mailcow_1");
             mailcownames.Add("mailcowdockerized_postfix-mailcow_1");
 
+            List<string> ldapnames = new List<string>();
+            ldapnames.Add("mailcowdockerized_ldap_1");
+            ldapnames.Add("mailcowdockerized_phpldap_1");
+
             DockerClient client = new DockerClientConfiguration(
                 new Uri("unix:///var/run/docker.sock"))
                 .CreateClient();
@@ -48,6 +52,7 @@ namespace saxpanel.Controllers
             
             List<ViewContainer> nginxcontainer = new List<ViewContainer>();
             List<ViewContainer> mailcowcontainer = new List<ViewContainer>();
+            List<ViewContainer> ldapcontainer = new List<ViewContainer>();
 
             foreach(var con in containers)
             {
@@ -63,12 +68,18 @@ namespace saxpanel.Controllers
                     if(mailcownames.Contains(cleanname))
                     {
                         mailcowcontainer.Add(new ViewContainer { Id = con.ID, Name = cleanname, State = con.State, Status = con.Status});
-                    }           
+                    }    
+
+                    if(ldapnames.Contains(cleanname))
+                    {
+                        ldapcontainer.Add(new ViewContainer { Id = con.ID, Name = cleanname, State = con.State, Status = con.Status});
+                    }       
                 }
             }
 
             ViewBag.nginxcontainer = nginxcontainer;
             ViewBag.mailcowcontainer = mailcowcontainer;
+            ViewBag.ldapcontainer = ldapcontainer;
 
             ViewBag.containers = containers;            
 

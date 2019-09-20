@@ -7,51 +7,76 @@
     <thead>
         <tr>
             <th>Dienst</th>
-            <th>Container</th>
-            <th>State</th>
-            <th>Status</th>
-            <th colspan="2">Action</th>
+            <th>Details</th>            
         </tr>
     </thead>
     <tbody>
-@foreach (var item in ViewBag.nginxcontainer)
-{    
     <tr>        
         <td>Reverse Proxy</td>
         <td>
-        @item.Name
-        </td>
-        <td>
-            @if(item.State == "running")
-            {
-                <span class="badge badge-success">@item.State</span>
-            }
-            else if(item.State == "exited")
-            {
-                <span class="badge badge-danger">@item.State</span>
-            }
-            else
-            {
-                @item.State
-            }
-            </td>
-        <td>@item.Status</td>
-        <td>
-            @if(item.State == "running")
-            {
-                @:<button type="button" class="btn btn-success disabled">Start</button> </td><td> <a href="SaxContainer/Stop/@item.Id" class="btn btn-danger">Stop</a>
-            }
-            else
-            {
-                @:<a href="/SaxContainer/Start/@item.Id" class="btn btn-success">Start</a> </td><td> <button type="button" class="btn btn-danger disabled">Stop</button>
-            }
-        </td>    
-    </tr>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Details</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+@foreach (var item in ViewBag.nginxcontainer)
+{    
+            <tr>
+                <td>
+                @item.Name
+                </td>
+                <td>
+                    @if(item.State == "running")
+                    {
+                        <span class="badge badge-success">@item.State</span>
+                    }
+                    else if(item.State == "exited")
+                    {
+                        <span class="badge badge-danger">@item.State</span>
+                    }
+                    else
+                    {
+                        @item.State
+                    }
+                    </td>
+                <td>@item.Status</td>
+                <td>
+                    @if(item.State == "running")
+                    {
+                        @:<button type="button" class="btn btn-success disabled">Start</button> </td><td> <a href="SaxContainer/Stop/@item.Id" class="btn btn-danger">Stop</a>
+                    }
+                    else
+                    {
+                        @:<a href="/SaxContainer/Start/@item.Id" class="btn btn-success">Start</a> </td><td> <button type="button" class="btn btn-danger disabled">Stop</button>
+                    }
+                </td>    
+            </tr>
 }
+            </tbody>
+        </table>
+        </td>
+    </tr>
+    <tr>        
+    <td>E-Mail und Groupware (Mailcow und SoGo)</td>
+    <td>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Details</th>
+                <th colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody>
 @foreach (var item in ViewBag.mailcowcontainer)
 {    
     <tr>        
-        <td>E-Mail und Groupware (Mailcow und SoGo)</td>
         <td>
         @item.Name
         </td>
@@ -82,5 +107,59 @@
         </td>    
     </tr>
 }
+            </tbody>
+        </table>
+        </td>
+    </tr>
+    <tr>        
+    <td>Authentifizierung</td>
+    <td>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Details</th>
+                <th colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach (var item in ViewBag.ldapcontainer)
+{    
+    <tr>        
+        <td>
+        @item.Name
+        </td>
+        <td>
+            @if(item.State == "running")
+            {
+                <span class="badge badge-success">@item.State</span>
+            }
+            else if(item.State == "exited")
+            {
+                <span class="badge badge-danger">@item.State</span>
+            }
+            else
+            {
+                @item.State
+            }
+            </td>
+        <td>@item.Status</td>
+        <td>
+            @if(item.State == "running")
+            {
+                @:<button type="button" class="btn btn-success disabled">Start</button> </td><td> <a href="SaxContainer/Stop/@item.Id" class="btn btn-danger">Stop</a>
+            }
+            else
+            {
+                @:<a href="/SaxContainer/Start/@item.Id" class="btn btn-success">Start</a> </td><td> <button type="button" class="btn btn-danger disabled">Stop</button>
+            }
+        </td>    
+    </tr>
+}
+            </tbody>
+        </table>
+        </td>
+    </tr>
     </tbody>
 </table>
